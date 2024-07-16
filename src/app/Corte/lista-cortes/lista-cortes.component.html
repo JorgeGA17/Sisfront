@@ -1,0 +1,22 @@
+
+<div class="container-fluid">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr >
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Nombre Corto</th>
+       </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let corte of cortes; let i=index">
+        
+        <td>{{i+1}}</td>
+        <td>{{corte.xnombre}}</td>   
+        <td>{{corte.xnombreCorto}}</td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+  

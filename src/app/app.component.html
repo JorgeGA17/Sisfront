@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Sisgestion</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <!-- Home -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="">Home</a>
+        </li>
+        
+        <!-- Proyectos -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="proyectoDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+            Proyectos
+          </a>
+          <div class="dropdown-menu" aria-labelledby="proyectoDropdown">
+            <a class="dropdown-item" routerLink="/lista-proyectos">Lista de Proyectos</a>
+            <!--<a class="dropdown-item" routerLink="/registrar-docente">Registrar Docentes</a>-->
+          </div>
+        </li>
+        
+        <!-- Cortes -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="corteDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+            Cortes
+          </a>
+          <div class="dropdown-menu" aria-labelledby="corteDropdown">
+            <a class="dropdown-item" routerLink="/lista-cortes">Lista de Cortes</a>
+            <!--<a class="dropdown-item" routerLink="/registrar-estudiante">Registrar Estudiantes</a>-->
+          </div>
+        </li>
+        
+    </ul>
+  <!--busqueda
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+      </form>
+    -->
+    </div>
+  </nav>
+  
+<div style="margin-top: 20px;">
+    <router-outlet></router-outlet>
+</div>

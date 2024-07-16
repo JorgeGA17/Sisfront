@@ -1,0 +1,26 @@
+
+  <table id="proyectos">
+    <thead class="thead-dark">
+      <tr >
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">CSJ</th>
+        <th scope="col">Problematica</th>
+        <th scope="col">Resumen</th>
+        <th scope="col">Objetivo General</th>
+     </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let proyecto of proyectos; let i=index">
+      
+      <td>{{i+1}}</td>
+      <td>{{proyecto.xnombreproyecto}}</td>   
+      <td>{{proyecto.cortefk.xnombreCorto}}</td>
+      <td>{{proyecto.xproblematica}}</td>  
+      <td>{{proyecto.xresumen}}</td>
+      <td>{{proyecto.xobjetivogeneral}}</td>
+    
+    </tr>
+  </tbody>
+</table>
