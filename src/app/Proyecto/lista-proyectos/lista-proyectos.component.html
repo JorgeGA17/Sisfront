@@ -1,26 +1,42 @@
+<mat-card appearance="outlined">
+  <mat-card-content>
+    <div class="table-container">
+      <table class="table table-striped table-full">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">CSJ</th>
+            <th scope="col">Problematica</th>
+            <th scope="col">Resumen</th>
+            <th scope="col">Objetivo General</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let proyecto of proyectos | paginate: { itemsPerPage: noOfRows, currentPage: page }; let i = index">
+            <td>{{proyecto.xnombreproyecto}}</td>
+            <td>{{proyecto.cortefk.xnombreCorto}}</td>
+            <td>{{proyecto.xproblematica}}</td>
+            <td>{{proyecto.xresumen}}</td>
+            <td>{{proyecto.xobjetivogeneral}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-  <table id="proyectos">
-    <thead class="thead-dark">
-      <tr >
-        <th scope="col">#</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">CSJ</th>
-        <th scope="col">Problematica</th>
-        <th scope="col">Resumen</th>
-        <th scope="col">Objetivo General</th>
-     </tr>
-    </thead>
-
-    <tbody>
-      <tr *ngFor="let proyecto of proyectos; let i=index">
-      
-      <td>{{i+1}}</td>
-      <td>{{proyecto.xnombreproyecto}}</td>   
-      <td>{{proyecto.cortefk.xnombreCorto}}</td>
-      <td>{{proyecto.xproblematica}}</td>  
-      <td>{{proyecto.xresumen}}</td>
-      <td>{{proyecto.xobjetivogeneral}}</td>
-    
-    </tr>
-  </tbody>
-</table>
+    <div class="pagination-container">
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+      <pagination-template #p="paginationApi" (pageChange)="page=$event">
+        <div class="form-group item-par-page">
+          <label for="noRows">Página</label>
+          <span>{{getStartIndex(p.getCurrent(),p.getLastPage())}} - {{getLastIndex(p.getCurrent(),p.getLastPage())}} de {{datas?.length}}</span>
+          <select name="noRows" id="noRows" (change)="page=1" [(ngModel)]="noOfRows">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+          </select>
+        </div>
+      </pagination-template>
+    </div>
+  </mat-card-content>
+</mat-card>
