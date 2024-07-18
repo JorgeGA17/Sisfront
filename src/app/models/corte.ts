@@ -7,4 +7,5 @@ export class Corte {
     xslug: string;
     ffechaModificacion: string;
     ffechaRegistro: string;
+    fotoUrl:string;
 }

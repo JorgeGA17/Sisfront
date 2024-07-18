@@ -26,16 +26,16 @@
     <div class="pagination-container">
       <pagination-controls (pageChange)="page = $event"></pagination-controls>
       <pagination-template #p="paginationApi" (pageChange)="page=$event">
+        
         <div class="form-group item-par-page">
           <label for="noRows">Página</label>
-          <span>{{getStartIndex(p.getCurrent(),p.getLastPage())}} - {{getLastIndex(p.getCurrent(),p.getLastPage())}} de {{datas?.length}}</span>
+          <span>{{ getStartIndex(p.getCurrent(), p.getLastPage()) }} - {{ getLastIndex(p.getCurrent(), p.getLastPage()) }} de {{ datas?.length }}</span>
           <select name="noRows" id="noRows" (change)="page=1" [(ngModel)]="noOfRows">
             <option value="5">5</option>
             <option value="10">10</option>
-            <option value="15">15</option>
-            <option value="20">20</option>
           </select>
         </div>
+
       </pagination-template>
     </div>
   </mat-card-content>

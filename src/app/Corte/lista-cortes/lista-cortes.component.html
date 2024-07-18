@@ -1,22 +1,21 @@
-
-<div class="container-fluid">
-    <table class="table">
-      <thead class="thead-dark">
-        <tr >
-          <th scope="col">#</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Nombre Corto</th>
-       </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let corte of cortes; let i=index">
-        
-        <td>{{i+1}}</td>
-        <td>{{corte.xnombre}}</td>   
-        <td>{{corte.xnombreCorto}}</td>
-      </tr>
-      
-      </tbody>
-    </table>
+<div class="container">
+  <div class="row mb-3">
+    <div class="col-md-12">
+      <input type="text" [(ngModel)]="searchText" class="form-control search-input" placeholder="Buscar corte...">
+    </div>
   </div>
-  
+  <div class="row">
+    <div *ngFor="let corte of filteredCortes(); let i = index" class="col-md-4 mb-3">
+      <div class="card" (click)="viewProyectos(corte.xnombreCorto)">
+        <img [src]="corte.fotoUrl" class="card-img-top" alt="{{corte.xnombreCorto}}">
+        <div class="card-body">
+          <h5 class="card-title">{{corte.xnombre}}</h5>
+          <p class="card-text">{{corte.xnombreCorto}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

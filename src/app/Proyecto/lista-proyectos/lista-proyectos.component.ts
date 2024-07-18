@@ -1,47 +1,54 @@
 import { Component, OnInit } from '@angular/core';
 import { Proyecto } from '../../models/proyecto';
 import { ProyectoService } from '../../service/proyecto.service';
-
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-lista-proyectos',
   templateUrl: './lista-proyectos.component.html',
   styleUrls: ['./lista-proyectos.component.css'],
- 
 })
-export class ListaProyectosComponent implements OnInit{
-
+export class ListaProyectosComponent implements OnInit {
   proyectos: Proyecto[] = [];
   page: number = 1;
-  noOfRows: number=10;
-  datas:any;
-  constructor(private proyectoService: ProyectoService) {}
+  noOfRows: number = 10;
+  datas: any;
+
+  constructor(private proyectoService: ProyectoService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-      this.getProyectos();
+    this.route.queryParams.subscribe(params => {
+      const filtro = params['filtro'];
+      this.getProyectos(filtro);
+    });
   }
 
-
-  private getProyectos(): void {
+  private getProyectos(filtro?: string): void {
     this.proyectoService.getAllProyectos().subscribe(data => {
       this.proyectos = data;
+      this.datas = data;
+      if (filtro) {
+        this.proyectos = this.proyectos.filter(p => p.cortefk.xnombreCorto === filtro);
+      }
     });
   }
   
   getStartIndex(currentPage: number, lastPage:number){
-    let firstIndex=1;
-    if((currentPage!== lastPage)||(currentPage>0 && lastPage>0)){
-      firstIndex=(Number(this.noOfRows)*(Number(currentPage)-1)+1)
+    let firstIndex = 1;
+    if ((currentPage !== lastPage) || (currentPage > 0 && lastPage > 0)) {
+      firstIndex = (Number(this.noOfRows) * (Number(currentPage) - 1) + 1);
     }
-    return firstIndex.toString()
+    return firstIndex.toString();
+  }
+
+  getLastIndex(currentPage: number, lastPage: number): string {
+    if (!this.datas || this.datas.length === 0) {
+      return '0';
     }
-
-    getLastIndex(currentPage: number, lastPage:number){
-      let lastIndex=this.datas ? this.datas.length: null;
-      if((currentPage!== lastPage)){
-        lastIndex=(Number(this.noOfRows)*(Number(currentPage)))
-      }
-      return lastIndex.toString()
-      }
-
+    let lastIndex = (Number(this.noOfRows) * (Number(currentPage)));
+    if (lastIndex > this.datas.length) {
+      lastIndex = this.datas.length;
+    }
+    return lastIndex.toString();
+  }
 }
