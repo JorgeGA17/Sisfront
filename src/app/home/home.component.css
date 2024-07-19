@@ -1,0 +1,87 @@
+/* Global Styles */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+h2{
+  font-size: 25px;
+  text-align: center;
+}
+
+h3{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+h5{
+  font-size: 12px;
+  font-weight: bold;
+}
+
+p{
+  
+  text-align: justify;
+}
+
+/* Gray Background */
+
+.gray-background {
+  background-color: #f7f7f7; /* Gray background */
+  padding: 20px;
+}
+
+/* White Box */
+
+.white-box {
+  background-color: #fff; /* White background */
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 1200px; /* Adjust the max-width to your liking */
+}
+
+/* Table Section */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th{
+  border: 2px solid #ccc;
+  padding: 5px;
+  text-align: center;
+  background-color: #f0f0f0;
+}
+
+td {
+  border: 2px solid #ccc;
+  padding: 10px;
+  text-align: left;
+  font-size: 15px;
+}
+
+
+#cards > div {
+  border: 1px solid #ddd;
+  padding: 20px;
+  
+  border-radius: 10px;
+}
+
+@media(max-width:576px) {
+  .icono-wrap{
+      flex-wrap: wrap;
+      justify-content: center !important;
+  }
+}

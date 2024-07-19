@@ -1,12 +1,21 @@
 .table-container {
     overflow-x: auto;
+    
   }
-  
+   
   .table-full {
     width: 100%;
     height: 100%;
+    overflow: hidden;
+    border-radius: 10px 10px 3px 0; 
   }
   
+
+  .thead {
+    background-color: #880202; /* color de fondo */
+    color: #fff; /* color de texto */
+  }
+
   .table-striped td{
     border: 1px solid black;
     text-align: justify;

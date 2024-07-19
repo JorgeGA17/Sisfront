@@ -2,13 +2,19 @@
     background-color: #8B0A1A; /* Color dark red */
     color: #fff; /* Color de texto blanco */
   }
-  
+
+  .logo{
+    filter: grayscale(100%) brightness(100);;
+  }
+
   .navbar-brand {
     color: #fff; /* Color de texto blanco para la marca */
+   
   }
 
   .navbar-nav .nav-link {
     color: #fff; /* Color de texto blanco para los enlaces de navegación */
+    font-size: 17px;
   }
   
   .navbar-nav .nav-link:hover {
@@ -21,4 +27,9 @@
 
   .dropdown-item:hover {
     background-color: #ccc; /* Color de fondo gris claro para los items del menú desplegable en hover */
+  }
+
+ 
+  body {
+    background-color: #f7f7f7; /* tono de gris claro */
   }

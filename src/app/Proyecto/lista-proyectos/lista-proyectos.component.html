@@ -1,13 +1,12 @@
 <mat-card appearance="outlined">
   <mat-card-content>
     <div class="table-container">
-      <table class="table table-striped table-full">
-        <thead class="thead-dark">
+      <h2 style="text-align: center;">Registro de Proyectos y Buenas Prácticas</h2>
+      <table class="table table-striped table-full" style="max-width: 1500px; margin: 0 auto;">
+        <thead class="thead">
           <tr>
             <th scope="col">Nombre</th>
             <th scope="col">CSJ</th>
-            <th scope="col">Problematica</th>
-            <th scope="col">Resumen</th>
             <th scope="col">Objetivo General</th>
           </tr>
         </thead>
@@ -15,8 +14,6 @@
           <tr *ngFor="let proyecto of proyectos | paginate: { itemsPerPage: noOfRows, currentPage: page }; let i = index">
             <td>{{proyecto.xnombreproyecto}}</td>
             <td>{{proyecto.cortefk.xnombreCorto}}</td>
-            <td>{{proyecto.xproblematica}}</td>
-            <td>{{proyecto.xresumen}}</td>
             <td>{{proyecto.xobjetivogeneral}}</td>
           </tr>
         </tbody>
