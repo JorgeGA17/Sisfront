@@ -9,10 +9,11 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./lista-proyectos.component.css'],
 })
 export class ListaProyectosComponent implements OnInit {
-  proyectos: Proyecto[] = [];
+  proyectos: Proyecto[];
   page: number = 1;
   noOfRows: number = 10;
   datas: any;
+  searchText: string = '';
 
   constructor(private proyectoService: ProyectoService, private route: ActivatedRoute) {}
 
@@ -23,6 +24,17 @@ export class ListaProyectosComponent implements OnInit {
     });
   }
 
+  filteredProyectos() {
+    if (!this.searchText) {
+      return this.proyectos;
+    }
+    const searchTextLower = this.searchText.toLowerCase();
+    return this.proyectos.filter(proyecto => {
+      return (proyecto.xnombreproyecto && proyecto.xnombreproyecto.toLowerCase().includes(searchTextLower)) ||
+             (proyecto.xobjetivogeneral && proyecto.xobjetivogeneral.toLowerCase().includes(searchTextLower));
+    });
+  }
+  
   private getProyectos(filtro?: string): void {
     this.proyectoService.getAllProyectos().subscribe(data => {
       this.proyectos = data;
@@ -51,4 +63,8 @@ export class ListaProyectosComponent implements OnInit {
     }
     return lastIndex.toString();
   }
+
+  
+
+
 }

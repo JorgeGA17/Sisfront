@@ -15,13 +15,15 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 import { HomeComponent } from './home/home.component';
 import { SliderComponent } from './home/slider/slider.component';
+import { FooterComponent } from './home/footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
     ListaProyectosComponent,
     ListaCortesComponent,
     HomeComponent,
-    SliderComponent
+    SliderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

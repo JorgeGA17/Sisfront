@@ -1,8 +1,13 @@
 <mat-card appearance="outlined">
-  <mat-card-content>
+  <mat-card-content> 
+    <h2 style="text-align: center;">Registro de Proyectos y Buenas Prácticas</h2>
+      
+      <div>
+        <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Buscar...">
+      </div>
+
     <div class="table-container">
-      <h2 style="text-align: center;">Registro de Proyectos y Buenas Prácticas</h2>
-      <table class="table table-striped table-full" style="max-width: 1500px; margin: 0 auto;">
+     <table class="table table-striped table-full" style="max-width: 1500px; margin: 0 auto;">
         <thead class="thead">
           <tr>
             <th scope="col">Nombre</th>
@@ -11,7 +16,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let proyecto of proyectos | paginate: { itemsPerPage: noOfRows, currentPage: page }; let i = index">
+          <tr *ngFor="let proyecto of filteredProyectos() | paginate: { itemsPerPage: noOfRows, currentPage: page }; let i = index">
             <td>{{proyecto.xnombreproyecto}}</td>
             <td>{{proyecto.cortefk.xnombreCorto}}</td>
             <td>{{proyecto.xobjetivogeneral}}</td>
@@ -19,6 +24,7 @@
         </tbody>
       </table>
     </div>
+
 
     <div class="pagination-container">
       <pagination-controls (pageChange)="page = $event"></pagination-controls>

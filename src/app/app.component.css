@@ -22,11 +22,20 @@
   }
 
   .dropdown-item {
-    color: #000000; /* Color de texto blanco para los items del menú desplegable */
+  /* Agrega un borde inferior a cada elemento de lista */
+  border-bottom: 1px solid #ccc;
+  /* Agrega un padding adicional para separar los elementos */
+  padding: 10px 20px;
+  /* Cambia el tamaño de la fuente y el estilo */
+  font-size: 16px;
+  /* Agrega un fondo claro para resaltar los elementos */
+  background-color: #f7f7f7;
   }
 
   .dropdown-item:hover {
-    background-color: #ccc; /* Color de fondo gris claro para los items del menú desplegable en hover */
+     /* Cambia el fondo y el texto al pasar el mouse por encima */
+    background-color: #e7e7e7;
+    color: #333;
   }
 
  
