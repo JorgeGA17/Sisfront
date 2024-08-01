@@ -14,6 +14,7 @@ export class ListaProyectosComponent implements OnInit {
   noOfRows: number = 10;
   datas: any;
   searchText: string = '';
+  archivosProyectosPath = 'assets/archivoproyectos/';
 
   constructor(private proyectoService: ProyectoService, private route: ActivatedRoute) {}
 
@@ -63,8 +64,5 @@ export class ListaProyectosComponent implements OnInit {
     }
     return lastIndex.toString();
   }
-
-  
-
 
 }

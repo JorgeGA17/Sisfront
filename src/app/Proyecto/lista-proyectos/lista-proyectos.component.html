@@ -13,6 +13,7 @@
             <th scope="col">Nombre</th>
             <th scope="col">CSJ</th>
             <th scope="col">Objetivo General</th>
+            <th scope="col">Descarga</th>
           </tr>
         </thead>
         <tbody>
@@ -20,6 +21,11 @@
             <td>{{proyecto.xnombreproyecto}}</td>
             <td>{{proyecto.cortefk.xnombreCorto}}</td>
             <td>{{proyecto.xobjetivogeneral}}</td>
+            <td style="text-align: center;">
+              <a [href]="archivosProyectosPath + proyecto.xnombreproyecto + '.pdf'" target="_blank">
+                <img src="assets/descarga.png" alt="Descarga" style="width: 40px; height: 40px;">
+              </a>
+       </td>
           </tr>
         </tbody>
       </table>
@@ -36,6 +42,7 @@
           <select name="noRows" id="noRows" (change)="page=1" [(ngModel)]="noOfRows">
             <option value="5">5</option>
             <option value="10">10</option>
+            <option value="15">15</option>
           </select>
         </div>
 
@@ -43,3 +50,4 @@
     </div>
   </mat-card-content>
 </mat-card>
+ 

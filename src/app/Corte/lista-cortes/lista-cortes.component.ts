@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Corte } from '../../models/corte';
 import { CorteService } from '../../service/corte.service';
 import { Router } from '@angular/router';
-import { FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-lista-cortes',
@@ -49,7 +48,6 @@ export class ListaCortesComponent implements OnInit{
     'CSJ TUMBES': 'assets/cortesimg/csjtumbes.jpg',
     'CSJ UCAYALI': 'assets/cortesimg/csjucayali.jpg',
     'CSNJ PENAL ESPECIALIZADA': 'assets/cortesimg/csnjpenalespecializada.jpg'
-   
   };
 
   constructor(private corteServicie: CorteService, private router: Router){}
