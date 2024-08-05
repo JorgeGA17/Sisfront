@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Proyecto } from '../../models/proyecto';
 import { ProyectoService } from '../../service/proyecto.service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-proyectos',
@@ -16,7 +17,7 @@ export class ListaProyectosComponent implements OnInit {
   searchText: string = '';
   archivosProyectosPath = 'assets/archivoproyectos/';
 
-  constructor(private proyectoService: ProyectoService, private route: ActivatedRoute) {}
+  constructor(private proyectoService: ProyectoService, private route: ActivatedRoute,  private router: Router) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -32,7 +33,8 @@ export class ListaProyectosComponent implements OnInit {
     const searchTextLower = this.searchText.toLowerCase();
     return this.proyectos.filter(proyecto => {
       return (proyecto.xnombreproyecto && proyecto.xnombreproyecto.toLowerCase().includes(searchTextLower)) ||
-             (proyecto.xobjetivogeneral && proyecto.xobjetivogeneral.toLowerCase().includes(searchTextLower));
+             (proyecto.xobjetivogeneral && proyecto.xobjetivogeneral.toLowerCase().includes(searchTextLower))||
+             (proyecto.cortefk.xnombreCorto && proyecto.cortefk.xnombreCorto.toLowerCase().includes(searchTextLower));
     });
   }
   
@@ -63,6 +65,14 @@ export class ListaProyectosComponent implements OnInit {
       lastIndex = this.datas.length;
     }
     return lastIndex.toString();
+  }
+
+  verDetalle( proyectopk: number): void {
+    this.router.navigate(['/detalle-proyecto',  proyectopk]);
+  }
+
+  buscar() {
+    this.page = 1;
   }
 
 }

@@ -16,6 +16,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import { HomeComponent } from './home/home.component';
 import { SliderComponent } from './home/slider/slider.component';
 import { FooterComponent } from './home/footer/footer.component';
+import { EstadisticaComponent } from './Estadistica/estadistica/estadistica.component';
+import { DetalleProyectoComponent } from './Proyecto/lista-proyectos/detalle-proyecto/detalle-proyecto.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,9 @@ import { FooterComponent } from './home/footer/footer.component';
     ListaCortesComponent,
     HomeComponent,
     SliderComponent,
-    FooterComponent
+    FooterComponent,
+    EstadisticaComponent,
+    DetalleProyectoComponent
   ],
   imports: [
     BrowserModule,

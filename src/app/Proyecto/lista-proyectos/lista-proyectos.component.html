@@ -3,7 +3,7 @@
     <h2 style="text-align: center;">Registro de Proyectos y Buenas Prácticas</h2>
       
       <div>
-        <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Buscar...">
+        <input type="text" class="form-control" [(ngModel)]="searchText" (ngModelChange)="buscar()" placeholder="Buscar...">
       </div>
 
     <div class="table-container">
@@ -13,7 +13,8 @@
             <th scope="col">Nombre</th>
             <th scope="col">CSJ</th>
             <th scope="col">Objetivo General</th>
-            <th scope="col">Descarga</th>
+            <th scope="col">Especialidades</th>
+            <th scope="col">Ficha</th>
           </tr>
         </thead>
         <tbody>
@@ -21,11 +22,24 @@
             <td>{{proyecto.xnombreproyecto}}</td>
             <td>{{proyecto.cortefk.xnombreCorto}}</td>
             <td>{{proyecto.xobjetivogeneral}}</td>
-            <td style="text-align: center;">
+            <td>
+              <ul>
+                <li *ngFor="let especialidad of proyecto.especialidades">
+                  {{ especialidad.xnombre }}
+                </li>
+              </ul>
+            </td>
+            <td>
+              <button [routerLink]="['/detalle-proyecto', proyecto.proyectopk]">
+                Ver detalle
+              </button>
+            </td>
+            <!--<td style="text-align: center;">
               <a [href]="archivosProyectosPath + proyecto.xnombreproyecto + '.pdf'" target="_blank">
                 <img src="assets/descarga.png" alt="Descarga" style="width: 40px; height: 40px;">
               </a>
-       </td>
+            </td>
+            -->
           </tr>
         </tbody>
       </table>

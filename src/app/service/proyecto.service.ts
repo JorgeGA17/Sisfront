@@ -15,10 +15,11 @@ export class ProyectoService {
     return this.http.get<any[]>(this.urlEndPoint);
   }
 
-/*  getProyectoById(proyectopk:number):Observable<Proyecto>{
+  getProyectoById(proyectopk:number):Observable<Proyecto>{
     return this.http.get<Proyecto>(this.urlEndPoint+'/'+proyectopk);
   }
 
+/*
   createProyecto(proyecto:Proyecto): Observable<Proyecto>{
     return this.http.post<Proyecto>(this.urlEndPoint,proyecto);
   }

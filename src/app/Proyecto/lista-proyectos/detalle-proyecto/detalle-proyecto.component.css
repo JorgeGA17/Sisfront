@@ -1,0 +1,47 @@
+.detalle-proyecto-container {
+  background-color: #fff; /* fondo blanco */
+  padding: 20px; /* espacio interno */
+  border: 1px solid #ddd; /* borde gris claro */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* sombra para dar profundidad */
+  max-width: 80%; /* ancho máximo del 70% */
+  margin-left: auto; /* centrar horizontalmente */
+  margin-right: auto; /* centrar horizontalmente */
+}
+
+.detalle-proyecto {
+  margin-top: calc(50px + 20px); /* ajusta el margen superior para que el contenido se desplace hacia abajo */
+}
+
+.detalle-proyecto h1 {
+
+  text-align: left;
+}
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 10px;
+}
+
+.grid-item {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  text-align: justify;
+}
+
+.grid-item:nth-child(odd) {
+  font-weight: bold;
+}
+
+
+
+.header-proyecto {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-volver {
+  margin-left: auto;
+}

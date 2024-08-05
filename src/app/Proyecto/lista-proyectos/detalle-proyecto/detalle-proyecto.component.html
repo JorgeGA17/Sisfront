@@ -1,0 +1,28 @@
+<div class="detalle-proyecto-container">
+<div class="detalle-proyecto" *ngIf="proyecto">
+
+  <div class="header-proyecto">
+    <h1>Proyecto: {{ proyecto.xnombreproyecto }}</h1>
+    <button class="btn-volver" (click)="volver()">Volver</button>
+  </div>
+
+  <div class="grid-container">
+    <div class="grid-item">Problemática:</div>
+    <div class="grid-item">{{ proyecto.xproblematica }}</div>
+    <div class="grid-item">Resumen:</div>
+    <div class="grid-item">{{ proyecto.xresumen }}</div>
+    <div class="grid-item">Objetivo General:</div>
+    <div class="grid-item">{{ proyecto.xobjetivogeneral }}</div>
+    <div class="grid-item">Corte:</div>
+    <div class="grid-item">{{ proyecto.cortefk.xnombre}}</div>
+    <div class="grid-item">Estado:</div>
+    <div class="grid-item">{{ proyecto.estadofk.xnombre }}</div>
+    <div class="grid-item">Especialidades:</div>
+    <div class="grid-item">
+      <ul>
+        <li *ngFor="let especialidad of proyecto.especialidades">{{ especialidad.xnombre }}</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>

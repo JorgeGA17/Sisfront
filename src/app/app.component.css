@@ -1,7 +1,12 @@
 .navbar {
-    background-color: #8B0A1A; /* Color dark red */
-    color: #fff; /* Color de texto blanco */
-  }
+  background-color: #8B0A1A; /* Color dark red */
+  color: #fff; /* Color de texto blanco */
+  position: fixed; /* Cambia de relative a fixed */
+  top: 0; /* Fija la navbar en la parte superior */
+  left: 0; /* Fija la navbar en la parte izquierda */
+  width: 100%; /* Ancho del 100% para que ocupe toda la pantalla */
+  z-index: 2000; /* Mantén el z-index para que se muestre encima de otros elementos */
+}
 
   .logo{
     filter: grayscale(100%) brightness(100);;
