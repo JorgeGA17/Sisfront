@@ -9,6 +9,9 @@ import { Proyecto } from '../models/proyecto';
 export class ProyectoService {
   [x: string]: any;
   private urlEndPoint: string ='http://localhost:8080/sis/Proyectos'
+  private proyectos: Proyecto[];
+
+
   constructor(private http:HttpClient) { }
 
   getAllProyectos():Observable<Proyecto[]>{

@@ -45,3 +45,21 @@
 .btn-volver {
   margin-left: auto;
 }
+
+.especialidades {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.especialidades span {
+  display: inline;
+  margin-right: 10px;
+}
+
+.especialidades span::after {
+  content: ", ";
+}
+
+.especialidades span:last-child::after {
+  content: "";
+}
