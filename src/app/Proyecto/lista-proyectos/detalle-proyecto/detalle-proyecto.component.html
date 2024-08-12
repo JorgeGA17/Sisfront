@@ -17,12 +17,46 @@
     <div class="grid-item">{{ proyecto.cortefk.xnombre}}</div>
     <div class="grid-item">Estado:</div>
     <div class="grid-item">{{ proyecto.estadofk.xnombre }}</div>
-    <div class="grid-item">Especialidades:</div>
+    <div class="grid-item">Eje (s):</div>
+    <div class="grid-item">
+      <ul class="horizontal-list">
+        <li *ngFor="let eje of proyecto.ejes">
+          <span class="tag">{{ eje.xnombre }}</span>
+        </li>
+      </ul>
+    </div>
+    <div class="grid-item">Especialidad (es):</div>
+    <div class="grid-item">
+      <ul class="horizontal-list">
+        <li *ngFor="let especialidad of proyecto.especialidades">
+          <span class="tag">{{ especialidad.xnombre }}</span>
+        </li>
+      </ul>
+    </div>
+    <div class="grid-item">Organos Jurisdiccionales:</div>
     <div class="grid-item">
       <ul>
-        <li *ngFor="let especialidad of especialidades">{{ especialidad.xnombre}}</li>
+        <li *ngFor="let jerarquia of proyecto.jerarquias">{{ jerarquia.xnombre }}</li>
       </ul>
+    </div>
+    <div class="grid-item">Palabras Clave:</div>
+    <div class="grid-item">
+      <ul class="horizontal-list">
+        <li *ngFor="let etiqueta of proyecto.etiquetas">
+          <span class="tag">{{ etiqueta.xnombre }}</span>
+        </li>
+      </ul>
+    </div>
+    <div class="grid-item">Ficha Técnica:</div>
+    <div class="grid-item">
+      <a [href]="archivosProyectosPath + proyecto.xnombreproyecto + '.pdf'" target="_blank">
+        <img src="assets/descarga.png" alt="Descarga" style="width: 40px; height: 40px;">
+      </a>
     </div>
   </div>
 </div>
 </div>
+
+ 
+         
+          

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProyectoService } from '../../../service/proyecto.service';
 import { Proyecto } from '../../../models/proyecto';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-detalle-proyecto',
@@ -11,9 +12,12 @@ import { Proyecto } from '../../../models/proyecto';
 export class DetalleProyectoComponent implements OnInit {
   proyecto: Proyecto;
   proyectopk: number;
-  especialidades: any[]; // Array para almacenar las especialidades
+  archivosProyectosPath = 'assets/archivoproyectos/';
+  private location: Location;
 
-  constructor(private route: ActivatedRoute, private proyectoService: ProyectoService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private proyectoService: ProyectoService,location: Location ) { 
+    this.location = location; // Inicialización de la propiedad location
+  }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -24,12 +28,7 @@ export class DetalleProyectoComponent implements OnInit {
           this.proyecto = data;
         });
 
-        // Llamada al método getAllProyectos() para obtener todas las especialidades
-        this.proyectoService.getAllProyectos().subscribe(data => {
-          this.especialidades = data.filter(proyecto => proyecto.proyectopk === this.proyectopk).flatMap(proyecto => proyecto.especialidades);
-        });
-
-      } else {
+           } else {
         // Manejar el caso en que el parámetro proyectopk no esté presente
         console.error('El parámetro proyectopk no está presente');
       }
@@ -37,7 +36,7 @@ export class DetalleProyectoComponent implements OnInit {
   }
 
   volver(): void {
-    this.router.navigate(['/lista-proyectos']);
+    this.location.back();
   }
 
 }

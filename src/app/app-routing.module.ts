@@ -5,6 +5,8 @@ import { ListaCortesComponent } from './Corte/lista-cortes/lista-cortes.componen
 import { HomeComponent } from './home/home.component';
 import { EstadisticaComponent } from './Estadistica/estadistica/estadistica.component';
 import { DetalleProyectoComponent } from './Proyecto/lista-proyectos/detalle-proyecto/detalle-proyecto.component';
+import { DetalleComponent } from './Corte/lista-cortes/detalle/detalle.component';
+import { BusquedaAvanzadaComponent } from './busqueda-avanzada/busqueda-avanzada.component';
 
 const routes: Routes = [
 
@@ -15,6 +17,8 @@ const routes: Routes = [
   {path: 'lista-cortes', component: ListaCortesComponent},
   {path: 'estadistica', component: EstadisticaComponent},
   {path: 'detalle-proyecto', component: DetalleProyectoComponent},
+  {path: 'detalle-corteproyecto', component: DetalleComponent},
+  {path: 'busqueda-avanzada', component: BusquedaAvanzadaComponent},
 
   {
     path: 'detalle-proyecto/:proyectopk',

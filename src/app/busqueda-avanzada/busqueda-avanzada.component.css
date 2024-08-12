@@ -1,0 +1,91 @@
+.table-container h1{
+  font-size: 35px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.table-container {
+  overflow-x: auto;
+  max-width: 1500px; /* ancho máximo de 1500px */
+  margin: 50px auto 0 auto; /* agregar un margen superior de 50px */
+  padding: 20px; /* agregar un poco de espacio entre el contenido y el borde */
+  border: 1px solid #fff; /* agregar un borde blanco */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* agregar un efecto de sombra */
+  background-color: #fff; /* White background */
+  border: 1px solid #ccc;
+}
+
+.table-full {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 10px 10px 3px 0; 
+}
+
+.thead {
+  background-color: #880202; /* color de fondo */
+  color: #fff; /* color de texto */
+}
+
+.table-striped td{
+  border: 1px solid black;
+  text-align: justify;
+  vertical-align: middle;
+}
+
+.table-striped th{
+  text-align: center;
+  vertical-align: middle;
+}
+
+
+.search-wrapper {
+  background-color: #f7f7f7;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.search-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.search-field {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.search-field label {
+  margin-bottom: 5px;
+}
+
+.search-field select,
+.search-field input {
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+.table-wrapper {
+  margin-top: 20px;
+}
+
+.button {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #0069d9;
+}
+
+.btn-right {
+  float: right;
+}

@@ -22,17 +22,4 @@ export class ProyectoService {
     return this.http.get<Proyecto>(this.urlEndPoint+'/'+proyectopk);
   }
 
-/*
-  createProyecto(proyecto:Proyecto): Observable<Proyecto>{
-    return this.http.post<Proyecto>(this.urlEndPoint,proyecto);
-  }
-  
-  updateProyecto(proyecto:Proyecto): Observable<Proyecto>{
-    return this.http.put<Proyecto>(this.urlEndPoint+'/'+proyecto.proyectopk,proyecto);
-  }
-
-  deleteProyecto(proyectopk:number):Observable<any>{
-    return this.http.delete(this.urlEndPoint+'/'+proyectopk);
-  }
-*/
 }
