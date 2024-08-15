@@ -1,1 +1,64 @@
-<p>detalle works!</p>
+  <div class="container">
+    <div class="foto">
+        <h2>Presidentes</h2>
+        <ul>
+          <li *ngFor="let presidente of presidentes">
+            <img [src]="'.assets/presidentes' + presidente.foto" alt="Foto de {{ presidente.personalfk.xnombreCompleto }}">
+            <p>
+                Nombre: {{ presidente.personalfk.xnombreCompleto }}
+            </p>
+            <p>
+                Corte: {{ presidente.cortefk.xnombre }}
+            </p>
+   
+          </li>
+        </ul>
+    </div>
+    <div class="comision">
+     <div class="table-container">
+        <h2>Comision Distrital de Gestion de Despacho Judicial</h2>
+        <table class="table table-striped table-full" style="max-width: 1500px; margin: 0 auto;">
+          <thead class="thead">
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Rol</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let miembro of miembros">
+                 <td>{{ miembro.personalfk.xnombreCompleto }}</td>
+                 <td>{{ miembro.cargofk.xnombre }}</td>
+            </tr>
+            </tbody>     
+        </table>
+      </div>
+    </div>
+    <div class="proyectos">
+      <div class="table-wrapper">
+        <table class="table table-striped table-full" style="max-width: 1500px; margin: 0 auto;">
+            <thead class="thead">
+                <tr>
+                  <th scope="col">Nombre Proyecto</th>
+                  <th scope="col">Corte Superior</th>
+                  <th scope="col">Proyecto</th>
+                  <th scope="col">Estado</th>
+                  <th scope="col">Accion</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let proyecto of proyectos; let i = index">
+                  <td>{{proyecto.xnombreproyecto}}</td>
+                  <td>{{proyecto.cortefk.xnombre}}</td>
+                  <td>{{proyecto.xnombreproyecto}}</td> 
+                  <td>{{proyecto.estadofk.xnombre}}</td> 
+                  <td>
+                    <button [routerLink]="['/detalle-proyecto', proyecto.proyectopk]">
+                      Ver detalle
+                    </button>
+                  </td>     
+                </tr>
+              </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

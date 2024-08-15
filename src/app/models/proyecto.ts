@@ -4,6 +4,7 @@ import { Especialidad } from './especialidad';
 import { Estado } from './estado';
 import { Etiqueta } from './Etiqueta';
 import { Jerarquia } from './Jerarquia';
+import { Personal } from './Personal';
 
 export class Proyecto {
     proyectopk: number;
@@ -14,7 +15,9 @@ export class Proyecto {
     cortefk: Corte;
     estadofk: Estado;
     especialidades: Especialidad[];
-    etiquetas: Etiqueta[];
     jerarquias:Jerarquia[];
     ejes: Eje[];
+    etiquetas: Etiqueta[];
+    personas: Personal[];
+    
 }

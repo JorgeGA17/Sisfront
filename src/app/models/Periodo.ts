@@ -1,10 +1,10 @@
 export class Periodo{
 
     periodoPk:number;
-    xNombre:string;
-    nEstado:string;
-    fFechaRegistro:string;
-    fFechaModificacion:string;
+    xnombre:string;
+    nestado:string;
+    ffechaRegistro:string;
+    ffechaModificacion:string;
 
 
 }

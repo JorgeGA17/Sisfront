@@ -1,9 +1,15 @@
+import { Cargo } from "./Cargo";
+import { Comision } from "./Comision";
+import { Personal } from "./Personal";
+
 export class Miembro{
     
     miembroPk:number;
-    nEstado:string;
-    fFechaRegistro:string;
-    fFechaModificacion:string;
-  
+    nestado:string;
+    ffechaRegistro:string;
+    ffechaModificacion:string;
+    comisionfk: Comision;
+    personalfk: Personal;
+    cargofk: Cargo;
 
 }

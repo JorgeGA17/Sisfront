@@ -1,0 +1,60 @@
+.table-container {
+    overflow-x: auto;
+    max-width: 1500px; /* ancho máximo de 1500px */
+    margin: 50px auto 0 auto; /* agregar un margen superior de 50px */
+    padding: 20px; /* agregar un poco de espacio entre el contenido y el borde */
+    border: 1px solid #fff; /* agregar un borde blanco */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* agregar un efecto de sombra */
+    background-color: #fff; /* White background */
+    border: 1px solid #ccc;
+  }
+
+  .table-full {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 10px 10px 3px 0; 
+}
+
+.thead {
+  background-color: #880202; /* color de fondo */
+  color: #fff; /* color de texto */
+}
+
+.table-striped td{
+  border: 1px solid black;
+  text-align: justify;
+  vertical-align: middle;
+}
+
+.table-striped th{
+  text-align: center;
+  vertical-align: middle;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 10px;
+}
+
+.foto {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  max-width: 750px;
+  margin-top: 100px; /* agregar un margen superior de 100px */
+}
+
+.comision {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  max-width: 750px;
+}
+
+.proyectos {
+  grid-column: 1 / 3;
+  grid-row: 2 / 3;
+  max-width: 1500px;
+  margin: 0 auto;
+}

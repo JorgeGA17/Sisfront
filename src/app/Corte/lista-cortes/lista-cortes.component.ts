@@ -80,7 +80,7 @@ export class ListaCortesComponent implements OnInit{
     }
 
     viewProyectos(xnombreCorto: string): void {
-      this.router.navigate(['/lista-proyectos'], { queryParams: { filtro: xnombreCorto } });
+      this.router.navigate(['/detalle-corteproyecto'], { queryParams: { filtro: xnombreCorto } });
     }
 
 }

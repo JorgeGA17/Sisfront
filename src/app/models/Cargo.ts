@@ -1,7 +1,7 @@
 export class Cargo {
     
     cargoPk: number;
-    xNombre:string;
+    xnombre:string;
     fFechaRegistro:string;
     fFechaModificacion:string;
 

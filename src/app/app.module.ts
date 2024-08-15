@@ -20,6 +20,8 @@ import { EstadisticaComponent } from './Estadistica/estadistica/estadistica.comp
 import { DetalleProyectoComponent } from './Proyecto/lista-proyectos/detalle-proyecto/detalle-proyecto.component';
 import { DetalleComponent } from './Corte/lista-cortes/detalle/detalle.component';
 import { BusquedaAvanzadaComponent } from './busqueda-avanzada/busqueda-avanzada.component';
+import { ActivatedRoute } from "@angular/router";
+
 @NgModule({
   declarations: [
     AppComponent,
