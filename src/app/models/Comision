@@ -1,0 +1,14 @@
+import { Corte } from './corte';
+
+
+export class Comision {
+
+    comisionPk:number;
+    xDescripcion: string;
+    nEstado: string;
+    fFechaRegistro:string;
+    fFechaModificacion:string;
+    cortefk: Corte;
+    
+
+}
