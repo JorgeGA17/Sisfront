@@ -49,3 +49,49 @@
     overflow-x: auto;
     overflow: hidden;
   }
+
+  
+.ver-detalle-button {
+  background-color: #666; /* color plomo */
+  color: #000; /* letras negras */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 10px; /* agregar bordes redondeados */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* agregar sombra */
+  transition: background-color 0.2s; /* agregar efecto de transición */
+}
+
+.ver-detalle-button:hover {
+  background-color: #555; /* cambiar color al pasar el mouse */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* aumentar sombra al pasar el mouse */
+}
+
+.ver-detalle-button:active {
+  background-color: #444; /* cambiar color al hacer clic */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6); /* aumentar sombra al hacer clic */
+}
+
+.ver-detalle-button {
+  background-color: #ccc; /* gris claro */
+  color: #000; /* letras negras */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 10px; /* agregar bordes redondeados */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* agregar sombra */
+  transition: background-color 0.2s; /* agregar efecto de transición */
+}
+
+.ver-detalle-button:hover {
+  background-color: #2196F3; /* gris claro más claro */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* aumentar sombra al pasar el mouse */
+}
+
+.ver-detalle-button:active {
+  background-color: #2196F3; /* gris claro oscuro */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6); /* aumentar sombra al hacer clic */
+}
+

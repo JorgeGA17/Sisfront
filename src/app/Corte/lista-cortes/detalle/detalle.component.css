@@ -46,6 +46,32 @@
   margin-top: 100px; /* agregar un margen superior de 100px */
 }
 
+.foto ul {
+  list-style: none; /* Elimina el punto del li */
+  padding: 0; /* Elimina el padding del ul */
+  margin: 0; /* Elimina el margen del ul */
+}
+
+.foto li {
+  display: flex; /* Convierte el li en un contenedor flex */
+  flex-direction: column; /* Establece la dirección del flex en columna */
+  align-items: center; /* Centra los elementos en el eje horizontal */
+  margin-bottom: 20px; /* Agrega un margen inferior para separar los elementos */
+}
+
+.foto img {
+  width: 250px; /* Establece el ancho de la imagen */
+  height: 250px; /* Establece el alto de la imagen */
+  border-radius: 50%; /* Hace que la imagen sea circular */
+  object-fit: cover; /* Ajusta la imagen para que se adapte al tamaño establecido */
+  margin-bottom: 10px; /* Agrega un margen inferior para separar la imagen del texto */
+}
+
+.foto p {
+  text-align: center; /* Centra el texto */
+  margin-bottom: 5px; /* Agrega un margen inferior para separar los párrafos */
+}
+
 .comision {
   grid-column: 2 / 3;
   grid-row: 1 / 2;
@@ -57,4 +83,49 @@
   grid-row: 2 / 3;
   max-width: 1500px;
   margin: 0 auto;
+}
+
+
+.ver-detalle-button {
+  background-color: #666; /* color plomo */
+  color: #000; /* letras negras */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 10px; /* agregar bordes redondeados */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* agregar sombra */
+  transition: background-color 0.2s; /* agregar efecto de transición */
+}
+
+.ver-detalle-button:hover {
+  background-color: #555; /* cambiar color al pasar el mouse */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* aumentar sombra al pasar el mouse */
+}
+
+.ver-detalle-button:active {
+  background-color: #444; /* cambiar color al hacer clic */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6); /* aumentar sombra al hacer clic */
+}
+
+.ver-detalle-button {
+  background-color: #ccc; /* gris claro */
+  color: #000; /* letras negras */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 10px; /* agregar bordes redondeados */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* agregar sombra */
+  transition: background-color 0.2s; /* agregar efecto de transición */
+}
+
+.ver-detalle-button:hover {
+  background-color: #2196F3; /* gris claro más claro */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* aumentar sombra al pasar el mouse */
+}
+
+.ver-detalle-button:active {
+  background-color: #2196F3; /* gris claro oscuro */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6); /* aumentar sombra al hacer clic */
 }

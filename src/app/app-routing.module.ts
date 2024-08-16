@@ -7,6 +7,7 @@ import { EstadisticaComponent } from './Estadistica/estadistica/estadistica.comp
 import { DetalleProyectoComponent } from './Proyecto/lista-proyectos/detalle-proyecto/detalle-proyecto.component';
 import { DetalleComponent } from './Corte/lista-cortes/detalle/detalle.component';
 import { BusquedaAvanzadaComponent } from './busqueda-avanzada/busqueda-avanzada.component';
+import { BusquedaProponenteComponent } from './busqueda-proponente/busqueda-proponente.component';
 
 const routes: Routes = [
 
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'detalle-proyecto', component: DetalleProyectoComponent},
   {path: 'detalle-corteproyecto', component: DetalleComponent},
   {path: 'busqueda-avanzada', component: BusquedaAvanzadaComponent},
+  {path: 'busqueda-proponente', component: BusquedaProponenteComponent},
 
   {
     path: 'detalle-proyecto/:proyectopk',

@@ -21,6 +21,7 @@ import { DetalleProyectoComponent } from './Proyecto/lista-proyectos/detalle-pro
 import { DetalleComponent } from './Corte/lista-cortes/detalle/detalle.component';
 import { BusquedaAvanzadaComponent } from './busqueda-avanzada/busqueda-avanzada.component';
 import { ActivatedRoute } from "@angular/router";
+import { BusquedaProponenteComponent } from './busqueda-proponente/busqueda-proponente.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ActivatedRoute } from "@angular/router";
     EstadisticaComponent,
     DetalleProyectoComponent,
     DetalleComponent,
-    BusquedaAvanzadaComponent
+    BusquedaAvanzadaComponent,
+    BusquedaProponenteComponent
   ],
   imports: [
     BrowserModule,

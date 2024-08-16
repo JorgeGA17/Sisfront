@@ -4,6 +4,4 @@ export class Cargo {
     xnombre:string;
     fFechaRegistro:string;
     fFechaModificacion:string;
-
-
 }

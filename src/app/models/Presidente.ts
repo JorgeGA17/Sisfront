@@ -11,5 +11,6 @@ export class Presidente{
     periodofk: Periodo;
     cortefk: Corte;
     personalfk: Personal;
-    foto: string;
+    fotoUrl: string;
+ 
 }
