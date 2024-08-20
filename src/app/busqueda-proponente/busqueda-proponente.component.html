@@ -1,26 +1,30 @@
 <div class="table-wrapper">
-    <table class="table table-striped table-full" style="max-width: 1500px; margin: 0 auto;">
-      <thead class="thead">
-        <tr>
-          <th scope="col">Proponente</th>
-          <th scope="col">Proyecto</th>
-          <th scope="col">Corte Superior</th>
-          <th scope="col">Estado</th>
-          <th scope="col">Accion</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let proyecto of proyectosFiltrados; let i = index">
-            <td>{{ concatenarNombres(proyecto.personas) }}</td>
-          <td>{{proyecto.xnombreproyecto}}</td> 
-          <td>{{proyecto.cortefk.xnombre}}</td>
-          <td>{{proyecto.estadofk.xnombre}}</td> 
-          <td>
-            <button [routerLink]="['/detalle-proyecto', proyecto.proyectopk]" class="ver-detalle-button">
-              Ver detalle
-            </button>
-          </td>     
-        </tr>
-      </tbody>
-    </table>
+  <table class="table table-striped table-full" style="max-width: 1500px; margin: 0 auto;">
+    <thead class="thead">
+      <tr>
+        <th scope="col">Proponente</th>
+        <th scope="col">Proyecto</th>
+        <th scope="col">Corte Superior</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Accion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let proyecto of proyectosFiltrados; let i = index">
+        <ng-container *ngFor="let persona of proyecto.personas; let j = index">
+          <tr>
+            <td>{{ persona.xnombreCompleto }}</td>
+            <td>{{ proyecto.xnombreproyecto }}</td>
+            <td>{{ proyecto.cortefk.xnombre }}</td>
+            <td>{{ proyecto.estadofk.xnombre }}</td>
+            <td>
+              <button [routerLink]="['/detalle-proyecto', proyecto.proyectopk]" class="ver-detalle-button">
+                Ver detalle
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+      </ng-container>
+    </tbody>
+  </table>
 </div>
