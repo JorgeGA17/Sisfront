@@ -1,14 +1,13 @@
 .table-wrapper {
-    overflow-x: auto;
-    max-width: 1500px; /* ancho máximo de 1500px */
-    margin: 50px auto 0 auto; /* agregar un margen superior de 50px */
-    padding: 20px; /* agregar un poco de espacio entre el contenido y el borde */
-    border: 1px solid #fff; /* agregar un borde blanco */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* agregar un efecto de sombra */
-    background-color: #fff; /* White background */
-    border: 1px solid #ccc;
-    margin-top: 300px;
-  }
+  overflow-x: auto;
+  max-width: 1500px; /* ancho máximo de 1500px */
+  margin: 20px auto 0 auto; /* reducir margen superior */
+  padding: 20px; /* agregar un poco de espacio entre el contenido y el borde */
+  border: 1px solid #fff; /* agregar un borde blanco */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* agregar un efecto de sombra */
+  background-color: #fff; /* White background */
+  border: 1px solid #ccc;
+}
   
   .table-full {
     width: 100%;
@@ -46,4 +45,41 @@
   
   .ver-detalle-button:hover {
     background-color: #3e8e41;
+  }
+
+  .search-inputs {
+    display: flex; /* Mostrar los buscadores horizontalmente */
+    justify-content: space-between; /* Distribuir los buscadores uniformemente */
+    align-items: center; /* Centrar los buscadores verticalmente */
+    margin: 20px auto; /* Agregar espacio entre los buscadores y la tabla */
+    max-width: 1500px; /* Establecer el ancho máximo igual al de la tabla */
+  }
+  
+  .search-inputs > div {
+    flex-basis: 25%; /* Establecer el ancho de cada buscador al 25% del total */
+    margin-right: 10px; /* Agregar espacio entre los buscadores */
+  }
+  
+  .search-inputs > button {
+    flex-basis: 10%; /* Establecer el ancho del botón al 10% del total */
+    margin-left: 10px; /* Agregar espacio entre el botón y los buscadores */
+  }
+  
+  .search-inputs label {
+    margin-right: 10px;
+  }
+  
+  .search-inputs input[type="text"] {
+    width: 100%;
+    max-width: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .titulo {
+    text-align: center; /* Centrar el título */
+    margin-top: 80px;
+    border-bottom: 1px solid #ccc; /* Agregar línea debajo del título */
+   
   }
