@@ -21,17 +21,30 @@
                 <tr>
                     <th scope="col">Nombre</th>
                     <th scope="col">Rol</th>
+                    <th scope="col">Correo Institucional</th>
                 </tr>
             </thead>
             <tbody>
             <tr *ngFor="let miembro of miembros">
                  <td>{{ miembro.personalfk.xnombreCompleto }}</td>
                  <td>{{ miembro.cargofk.xnombre }}</td>
+                 <td>{{ miembro.personalfk.xcorreoInstitucional }}</td>
             </tr>
             </tbody>     
         </table>
+
+        <div style="margin-top: 20px;">
+          <b style="margin-right: 20px;" >Visualiza la resolución: </b>
+          <a [href]="getArchivoComisionUrl(filtro)" target="_blank">
+            <img src="assets/descarga.png" alt="Descarga" style="width: 40px; height: 40px;">
+          </a>
+        </div>
+  
+
       </div>
     </div>
+
+
     <div class="proyectos">
       <div class="table-wrapper">
         <table class="table table-striped table-full" style="max-width: 1500px; margin: 0 auto;">

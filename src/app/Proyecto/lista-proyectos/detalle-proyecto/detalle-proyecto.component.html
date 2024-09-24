@@ -39,6 +39,7 @@
         <li *ngFor="let jerarquia of proyecto.jerarquias">{{ jerarquia.xnombre }}</li>
       </ul>
     </div>
+
     <div class="grid-item">Palabras Clave:</div>
     <div class="grid-item">
       <ul class="horizontal-list">
@@ -47,6 +48,16 @@
         </li>
       </ul>
     </div>
+
+  <div class="grid-item">Evaluacion Innovacion:</div>
+    <div class="grid-item">{{ proyecto.xinnovacion }}</div>
+    <div class="grid-item">Evaluacion Impacto:</div>
+    <div class="grid-item">{{ proyecto.ximpacto }}</div>
+    <div class="grid-item">Evaluacion Replicabilidad:</div>
+    <div class="grid-item">{{ proyecto.xreplicabilidad }}</div>
+    <div class="grid-item">Evaluacion Sostenibilidad:</div>
+    <div class="grid-item">{{ proyecto.xsostenibilidad }}</div>
+
     <div class="grid-item">Ficha Técnica:</div>
     <div class="grid-item">
       <a [href]="archivosProyectosPath + proyecto.xnombreproyecto + '.pdf'" target="_blank">

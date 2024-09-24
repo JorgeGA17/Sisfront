@@ -12,6 +12,10 @@ export class Proyecto {
     xproblematica: string;
     xresumen: string;
     xobjetivogeneral: string;
+    xinnovacion: number;
+    ximpacto: number;
+    xreplicabilidad: number;
+    xsostenibilidad: number;
     cortefk: Corte;
     estadofk: Estado;
     especialidades: Especialidad[];

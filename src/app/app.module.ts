@@ -1,7 +1,6 @@
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { DataTablesModule } from "angular-datatables";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { ListaCortesComponent } from "./Corte/lista-cortes/lista-cortes.component";
@@ -20,7 +19,6 @@ import { EstadisticaComponent } from './Estadistica/estadistica/estadistica.comp
 import { DetalleProyectoComponent } from './Proyecto/lista-proyectos/detalle-proyecto/detalle-proyecto.component';
 import { DetalleComponent } from './Corte/lista-cortes/detalle/detalle.component';
 import { BusquedaAvanzadaComponent } from './busqueda-avanzada/busqueda-avanzada.component';
-import { ActivatedRoute } from "@angular/router";
 import { BusquedaProponenteComponent } from './busqueda-proponente/busqueda-proponente.component';
 
 @NgModule({
@@ -41,7 +39,7 @@ import { BusquedaProponenteComponent } from './busqueda-proponente/busqueda-prop
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    DataTablesModule,
+    MatTableModule,
     MatCardModule,
     MatTableModule,
     NgxPaginationModule,
@@ -52,6 +50,7 @@ import { BusquedaProponenteComponent } from './busqueda-proponente/busqueda-prop
     FormsModule,
     ReactiveFormsModule
   ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })

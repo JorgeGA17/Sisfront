@@ -11,5 +11,6 @@ export class Comision {
     ffechaModificacion:string;
     cortefk: Corte;
     periodofk: Periodo;
+    xresolucion: string;
 
 }
