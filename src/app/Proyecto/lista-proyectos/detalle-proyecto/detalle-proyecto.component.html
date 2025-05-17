@@ -35,8 +35,10 @@
     </div>
     <div class="grid-item">Organos Jurisdiccionales:</div>
     <div class="grid-item">
-      <ul>
-        <li *ngFor="let jerarquia of proyecto.jerarquias">{{ jerarquia.xnombre }}</li>
+      <ul class="horizontal-list">
+        <li *ngFor="let jerarquia of proyecto.jerarquias">
+          <span class="tag">{{ jerarquia.xnombre }} </span>
+        </li>
       </ul>
     </div>
 
