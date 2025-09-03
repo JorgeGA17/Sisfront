@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProyectoService } from '../../../service/proyecto.service';
-import { Proyecto } from '../../../models/proyecto';
 import { Location } from '@angular/common';
+import { ProyectoService } from '../../service/proyecto.service';
+import { Proyecto } from '../../models/proyecto';
 
 
 @Component({

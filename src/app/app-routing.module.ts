@@ -4,10 +4,10 @@ import { ListaProyectosComponent } from './Proyecto/lista-proyectos/lista-proyec
 import { ListaCortesComponent } from './Corte/lista-cortes/lista-cortes.component';
 import { HomeComponent } from './home/home.component';
 import { EstadisticaComponent } from './Estadistica/estadistica/estadistica.component';
-import { DetalleProyectoComponent } from './Proyecto/lista-proyectos/detalle-proyecto/detalle-proyecto.component';
 import { DetalleComponent } from './Corte/lista-cortes/detalle/detalle.component';
 import { BusquedaAvanzadaComponent } from './busqueda-avanzada/busqueda-avanzada.component';
 import { BusquedaProponenteComponent } from './busqueda-proponente/busqueda-proponente.component';
+import { DetalleProyectoComponent } from './Proyecto/detalle-proyecto/detalle-proyecto.component';
 
 const routes: Routes = [
 
