@@ -32,9 +32,9 @@ export class ListaProyectosComponent implements OnInit {
     }
     const searchTextLower = this.searchText.toLowerCase();
     return this.proyectos.filter(proyecto => {
-      return (proyecto.xnombreproyecto && proyecto.xnombreproyecto.toLowerCase().includes(searchTextLower)) ||
-             (proyecto.xobjetivogeneral && proyecto.xobjetivogeneral.toLowerCase().includes(searchTextLower))||
-             (proyecto.cortefk.xnombreCorto && proyecto.cortefk.xnombreCorto.toLowerCase().includes(searchTextLower));
+      return (proyecto.xnombreProyecto && proyecto.xnombreProyecto.toLowerCase().includes(searchTextLower)) ||
+             (proyecto.xobjetivoGeneral && proyecto.xobjetivoGeneral.toLowerCase().includes(searchTextLower))||
+             (proyecto.nombreCorte && proyecto.nombreCorte.toLowerCase().includes(searchTextLower));
     });
   }
   
@@ -43,7 +43,7 @@ export class ListaProyectosComponent implements OnInit {
       this.proyectos = data;
       this.datas = data;
       if (filtro) {
-        this.proyectos = this.proyectos.filter(p => p.cortefk.xnombreCorto === filtro);
+        this.proyectos = this.proyectos.filter(p => p.nombreCorte=== filtro);
       }
     });
   }

@@ -15,7 +15,6 @@
     <label>Apellido:</label>
     <input type="text" style="max-width: 200px" [(ngModel)]="searchTextApellido" (ngModelChange)="filtrarProyectos()" placeholder="Buscar...">
   </div>
- 
 </div>
 
 <div class="table-wrapper">
@@ -30,21 +29,17 @@
       </tr>
     </thead>
     <tbody>
-      <ng-container *ngFor="let proyecto of proyectosFiltrados; let i = index">
-        <ng-container *ngFor="let persona of proyecto.personas; let j = index">
-          <tr>
-            <td>{{ persona.xnombreCompleto }}</td>
-            <td>{{ proyecto.xnombreproyecto }}</td>
-            <td>{{ proyecto.cortefk.xnombre }}</td>
-            <td>{{ proyecto.estadofk.xnombre }}</td>
-            <td>
-              <button [routerLink]="['/detalle-proyecto', proyecto.proyectopk]" class="ver-detalle-button">
-                Ver detalle
-              </button>
-            </td>
-          </tr>
-        </ng-container>
-      </ng-container>
+      <tr *ngFor="let item of proponentesProyectosFiltrados">
+        <td>{{ item.proponente }}</td>
+        <td>{{ item.xnombreProyecto }}</td>
+        <td>{{ item.nombreCorte }}</td>
+        <td>{{ item.nombreEstado }}</td>
+        <td>
+          <button [routerLink]="['/detalle-proyecto', item.proyectopk]" class="ver-detalle-button">
+            Ver detalle
+          </button>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>

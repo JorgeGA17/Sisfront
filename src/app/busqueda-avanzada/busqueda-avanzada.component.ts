@@ -14,14 +14,13 @@ import { EstadoService } from '../service/estado.service';
 import { Etiqueta } from '../models/Etiqueta';
 import { EtiquetaService } from '../service/etiqueta.service';
 
-
 @Component({
   selector: 'app-busqueda-avanzada',
   templateUrl: './busqueda-avanzada.component.html',
   styleUrls: ['./busqueda-avanzada.component.css']
 })
 export class BusquedaAvanzadaComponent implements OnInit {
-  
+
   proyectos: Proyecto[];
   proyectosFiltrados: Proyecto[];
   cortes: Corte[];
@@ -30,6 +29,7 @@ export class BusquedaAvanzadaComponent implements OnInit {
   jerarquias: Jerarquia[];
   estados: Estado[];
   etiquetas: Etiqueta[];
+  
   corteSeleccionada: number | null | undefined;
   ejeSeleccionado: number | null | undefined;
   especialidadSeleccionada: number | null | undefined;
@@ -37,13 +37,13 @@ export class BusquedaAvanzadaComponent implements OnInit {
   estadoSeleccionado: number | null | undefined;
   etiquetaSeleccionada: number | null | undefined;
 
-  constructor(private proyectoService: ProyectoService, 
-              private corteService: CorteService, 
-              private ejeService: EjeService,
-              private especialidadService: EspecialidadService,
-              private jerarquiaService: JerarquiaService,
-              private estadoService: EstadoService,
-              private etiquetaService: EtiquetaService){}
+  constructor(private proyectoService: ProyectoService,
+    private corteService: CorteService,
+    private ejeService: EjeService,
+    private especialidadService: EspecialidadService,
+    private jerarquiaService: JerarquiaService,
+    private estadoService: EstadoService,
+    private etiquetaService: EtiquetaService) { }
 
   ngOnInit(): void {
     this.getProyectos();
@@ -55,92 +55,73 @@ export class BusquedaAvanzadaComponent implements OnInit {
     this.getEtiquetas();
   }
 
-  private getProyectos(){ 
-    this.proyectoService.getAllProyectos().subscribe(dato =>{
-      this.proyectos=dato;
-      this.proyectosFiltrados = this.proyectos; // Inicializa proyectosFiltrados con todos los proyectos
+  private getProyectos() {
+    this.proyectoService.getAllProyectos().subscribe(dato => {
+      this.proyectos = dato;
+      this.proyectosFiltrados = this.proyectos;
     });
   }
 
-  private getCortes(){
-    this.corteService.getAllCortes().subscribe(dato =>{
-      this.cortes=dato;
+  private getCortes() {
+    this.corteService.getAllCortes().subscribe(dato => {
+      this.cortes = dato;
     });
   }
 
-  private getEjes(){
-    this.ejeService.getAllEjes().subscribe(dato =>{
-      this.ejes=dato;
+  private getEjes() {
+    this.ejeService.getAllEjes().subscribe(dato => {
+      this.ejes = dato;
     });
   }
 
-  private getEspecialidades(){
-    this.especialidadService.getAllEspecialidades().subscribe(dato =>{
-      this.especialidades=dato;
+  private getEspecialidades() {
+    this.especialidadService.getAllEspecialidades().subscribe(dato => {
+      this.especialidades = dato;
     });
   }
 
-  private getJerarquias(){
-    this.jerarquiaService.getAllJerarquias().subscribe(dato =>{
-      this.jerarquias=dato;
+  private getJerarquias() {
+    this.jerarquiaService.getAllJerarquias().subscribe(dato => {
+      this.jerarquias = dato;
     });
   }
 
-  private getEstados(){
-    this.estadoService.getAllEstados().subscribe(dato =>{
-      this.estados=dato;
+  private getEstados() {
+    this.estadoService.getAllEstados().subscribe(dato => {
+      this.estados = dato;
     });
   }
 
-  private getEtiquetas(){
-    this.etiquetaService.getAllEtiquetas().subscribe(dato =>{
-      this.etiquetas=dato;
+  private getEtiquetas() {
+    this.etiquetaService.getAllEtiquetas().subscribe(dato => {
+      this.etiquetas = dato;
     });
   }
 
 filtrarProyectos() {
   this.proyectosFiltrados = this.proyectos.filter(proyecto => {
-      let filtroCorte = this.corteSeleccionada ? proyecto.cortefk.cortePk == this.corteSeleccionada : true;
-      let filtroJerarquia = this.jerarquiaSeleccionada ? proyecto.jerarquias.some(jerarquia => jerarquia.jerarquiaPk == this.jerarquiaSeleccionada) : true;
-      let filtroEspecialidad = this.especialidadSeleccionada ? proyecto.especialidades.some(especialidad => especialidad.especialidadPk == this.especialidadSeleccionada) : true;
-      let filtroEje = this.ejeSeleccionado ? proyecto.ejes.some(eje => eje.ejePk == this.ejeSeleccionado) : true;
-      let filtroEstado = this.estadoSeleccionado ? proyecto.estadofk.estadoPk == this.estadoSeleccionado : true;
-      let filtroEtiqueta = this.etiquetaSeleccionada ? proyecto.etiquetas.some(etiqueta => etiqueta.etiquetaPk == this.etiquetaSeleccionada) : true;
+    // Convierte los valores de los select a números
+    const corteId = this.corteSeleccionada ? Number(this.corteSeleccionada) : undefined;
+    const ejeId = this.ejeSeleccionado ? Number(this.ejeSeleccionado) : undefined;
+    const especialidadId = this.especialidadSeleccionada ? Number(this.especialidadSeleccionada) : undefined;
+    const jerarquiaId = this.jerarquiaSeleccionada ? Number(this.jerarquiaSeleccionada) : undefined;
+    const estadoId = this.estadoSeleccionado ? Number(this.estadoSeleccionado) : undefined;
+    const etiquetaId = this.etiquetaSeleccionada ? Number(this.etiquetaSeleccionada) : undefined;
 
-      return filtroCorte && filtroJerarquia && filtroEspecialidad && filtroEje && filtroEstado && filtroEtiqueta;
+    // Filtros de IDs (directos)
+    const filtroCorte = !corteId || proyecto.corteId == corteId;
+    const filtroEstado = !estadoId || proyecto.estadoId == estadoId;
+
+    // Filtros de Arrays de IDs
+    const filtroJerarquia = !jerarquiaId || (proyecto.jerarquiaIds && proyecto.jerarquiaIds.includes(jerarquiaId));
+    const filtroEspecialidad = !especialidadId || (proyecto.especialidadIds && proyecto.especialidadIds.includes(especialidadId));
+    const filtroEje = !ejeId || (proyecto.ejeIds && proyecto.ejeIds.includes(ejeId));
+    const filtroEtiqueta = !etiquetaId || (proyecto.etiquetaIds && proyecto.etiquetaIds.includes(etiquetaId));
+
+    // El proyecto se muestra solo si todas las condiciones son verdaderas
+    return filtroCorte && filtroEstado && filtroJerarquia && filtroEspecialidad && filtroEje && filtroEtiqueta;
   });
 }
-
-
-  seleccionarCorte(corte: number) {
-    this.corteSeleccionada = corte;
-    this.filtrarProyectos();
-  }
-
-  seleccionarEje(eje: number) {
-    this.ejeSeleccionado = eje;
-    this.filtrarProyectos();
-  }
-
-  seleccionarEspecialidad(especialidad: number) {
-    this.especialidadSeleccionada = especialidad;
-    this.filtrarProyectos();
-  }
-
-  seleccionarJerarquia(jerarquia: number) {
-    this.jerarquiaSeleccionada = jerarquia;
-    this.filtrarProyectos();
-  }
-
-  seleccionarEstado(estado: number) {
-    this.estadoSeleccionado = estado;
-    this.filtrarProyectos();
-  }
-
-  seleccionarEtiqueta(etiqueta: number) {
-    this.etiquetaSeleccionada = etiqueta;
-    this.filtrarProyectos();
-  }
 
   reiniciarBusqueda() {
     this.etiquetaSeleccionada = undefined;
@@ -151,6 +132,4 @@ filtrarProyectos() {
     this.corteSeleccionada = undefined;
     this.proyectosFiltrados = this.proyectos;
   }
-
-  
 }

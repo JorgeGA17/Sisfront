@@ -5,10 +5,10 @@
         <li *ngFor="let presidente of presidentes">
           <img [src]="presidente.fotoUrl" *ngIf="presidente.fotoUrl">
           <p>
-            Nombre: {{ presidente.personalfk.xnombreCompleto }}
+            Nombre: {{ presidente.personalNombre }}
           </p>
           <p>
-            Corte: {{ presidente.cortefk.xnombre }}
+            Corte: {{ presidente.corteNombre}}
           </p>
         </li>
       </ul>
@@ -26,9 +26,9 @@
             </thead>
             <tbody>
             <tr *ngFor="let miembro of miembros">
-                 <td>{{ miembro.personalfk.xnombreCompleto }}</td>
-                 <td>{{ miembro.cargofk.xnombre }}</td>
-                 <td>{{ miembro.personalfk.xcorreoInstitucional }}</td>
+                 <td>{{ miembro.personalNombre }}</td>
+                 <td>{{ miembro.cargoNombre }}</td>
+                 <td>{{ miembro.personalCorreo }}</td>
             </tr>
             </tbody>     
         </table>
@@ -52,19 +52,17 @@
                 <tr>
                   <th scope="col">Nombre Proyecto</th>
                   <th scope="col">Corte Superior</th>
-                  <th scope="col">Proyecto</th>
                   <th scope="col">Estado</th>
                   <th scope="col">Accion</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let proyecto of proyectos; let i = index">
-                  <td>{{proyecto.xnombreproyecto}}</td>
-                  <td>{{proyecto.cortefk.xnombre}}</td>
-                  <td>{{proyecto.xnombreproyecto}}</td> 
-                  <td>{{proyecto.estadofk.xnombre}}</td> 
+                  <td>{{proyecto.xnombreProyecto}}</td>
+                  <td>{{proyecto.nombreCorte}}</td>
+                  <td>{{proyecto.nombreEstado}}</td> 
                   <td>
-                    <button [routerLink]="['/detalle-proyecto', proyecto.proyectopk]" class="ver-detalle-button">
+                    <button [routerLink]="['/detalle-proyecto', proyecto.proyectoPk]" class="ver-detalle-button">
                       Ver detalle
                     </button>
                   </td>     

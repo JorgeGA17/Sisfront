@@ -1,15 +1,13 @@
-import { Cargo } from "./Cargo";
-import { Comision } from "./Comision";
-import { Personal } from "./Personal";
 
-export class Miembro{
-    
-    miembroPk:number;
-    nestado:string;
-    ffechaRegistro:string;
-    ffechaModificacion:string;
-    comisionfk: Comision;
-    personalfk: Personal;
-    cargofk: Cargo;
+export class Miembro {
 
+    miembroPk: number;
+    comisionId: number;
+    personalId: number;
+    cargoId: number;
+
+    comisionNombreCorte: string;
+    personalNombre:string;
+    personalCorreo:string;
+    cargoNombre:string
 }

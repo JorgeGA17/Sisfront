@@ -1,16 +1,16 @@
-  import { Component, OnInit } from '@angular/core';
-  import { Miembro } from '../../../models/Miembro';
-  import { MiembroService } from '../../../service/miembro.service';
-  import { ProyectoService } from '../../../service/proyecto.service';
-  import { Proyecto } from '../../../models/proyecto';
-  import { Presidente } from '../../../models/Presidente';
-  import { PresidenteService } from '../../../service/presidente.service';
-  import { ActivatedRoute } from '@angular/router';
-  import { ComisionService } from '../../../service/comision.service';
-  import { Comision } from '../../../models/Comision';
-import { map, Observable, tap } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { forkJoin } from 'rxjs';
+import { MiembroService } from '../../../service/miembro.service';
+import { ProyectoService } from '../../../service/proyecto.service';
+import { PresidenteService } from '../../../service/presidente.service';
+// import { ComisionService } from '../../../service/comision.service'; // Se eliminó esta importación
+import { Proyecto } from '../../../models/proyecto';
+import { Presidente } from '../../../models/Presidente';
+import { Miembro } from '../../../models/Miembro';
+// import { Comision } from '../../../models/Comision'; // Se eliminó esta importación
 
-  const fotoUrls: { [key: string]: string } = {
+const fotoUrls: { [key: string]: string } = {
   'CSJ AMAZONAS': 'assets/presidentes/csjamazonas.png',
   'CSJ ANCASH': 'assets/presidentes/csjancash.jpg',
   'CSJ APURIMAC': 'assets/presidentes/csjapurimac.jpg',
@@ -46,72 +46,61 @@ import { map, Observable, tap } from 'rxjs';
   'CSJ TUMBES': 'assets/presidentes/csjtumbes.jpg',
   'CSJ UCAYALI': 'assets/presidentes/csjucayali.jpg',
   'CSNJ PENAL ESPECIALIZADA': 'assets/presidentes/csnjpenalespecializada.jpg'
-  };
+};
 
-  @Component({
-    selector: 'app-detalle',
-    templateUrl: './detalle.component.html',
-    styleUrls: ['./detalle.component.css']
-  })
-  export class DetalleComponent implements OnInit {
-    miembros: Miembro[];
-    proyectos: Proyecto[];
-    presidentes: Presidente[];
-    filtro: string;
-    archivosComisionPath = 'assets/archivocomision/';
-    http: any;
+@Component({
+  selector: 'app-detalle',
+  templateUrl: './detalle.component.html',
+  styleUrls: ['./detalle.component.css']
+})
+export class DetalleComponent implements OnInit {
+  miembros: Miembro[] = [];
+  proyectos: Proyecto[] = [];
+  presidentes: Presidente[] = [];
+  filtro: string;
+  archivosComisionPath = 'assets/archivocomision/';
 
+  constructor(
+    private miembroService: MiembroService,
+    private proyectoService: ProyectoService,
+    private presidenteService: PresidenteService,
+    private route: ActivatedRoute
+  ) { }
 
-    constructor(private miembroService: MiembroService, 
-                private proyectoService: ProyectoService, 
-                private presidenteService: PresidenteService, 
-                private comisionService: ComisionService,
-                private route: ActivatedRoute) { }
-                
-ngOnInit(): void {
-  this.route.queryParams.subscribe(params => {
-    this.filtro = params['filtro'];
-    this.getProyectos();
-    this.getMiembros();
-    this.getPresidentes();
- 
-  });
-}
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.filtro = params['filtro'];
+      this.loadAllData();
+    });
+  }
 
+  loadAllData(): void {
+    forkJoin({
+      proyectos: this.proyectoService.getAllProyectos(),
+      miembros: this.miembroService.getAllMiembros(),
+      presidentes: this.presidenteService.getAllPresidentes()
+    }).subscribe(({ proyectos, miembros, presidentes }) => {
+      const presidentesConFoto = presidentes.map(p => ({
+        ...p,
+        fotoUrl: fotoUrls[p.corteNombre.trim().toUpperCase()] || ''
+      }));
 
-    getMiembros(): void {
-      this.miembroService.getAllMiembros().subscribe((miembros: Miembro[]) => {
-        this.comisionService.getAllComisiones().subscribe((comisiones: Comision[]) => {
-          const comisionesFiltradas = comisiones.filter(c => c.cortefk.xnombreCorto === this.filtro);
-          const miembrosFiltrados = miembros.filter(m => comisionesFiltradas.some(c => c.comisionPk === m.comisionfk.comisionPk));
-          this.miembros = miembrosFiltrados;
-        });
+      // Aplicar filtros a los datos
+      const filtroNormalizado = this.filtro.trim().toLowerCase();
+      this.proyectos = proyectos.filter(p => {
+        // Registro para cada proyecto durante el proceso de filtrado
+        const nombreCorteNormalizado = p.nombreCorte.trim().toLowerCase();
+        const match = nombreCorteNormalizado === filtroNormalizado;
+        return match;
       });
-    }
-
-    getProyectos(): void {
-      this.proyectoService.getAllProyectos().subscribe((proyectos: Proyecto[]) => {
-        this.proyectos = proyectos.filter(p => p.cortefk.xnombreCorto === this.filtro);
-      });
-    }
-
-    getPresidentes(): void {
-        this.presidenteService.getAllPresidentes().subscribe((presidentes: Presidente[]) => {
-          this.presidentes = presidentes.filter(p => p.cortefk.xnombreCorto === this.filtro).map(p => ({
-            ...p,
-            fotoUrl: fotoUrls[p.cortefk.xnombreCorto] || '' // si no existe, establece una cadena vacía
-          }));
-        });
-      }
-
-    getArchivoComisionUrl(filtro: string): string {
-        const archivoNombre = `RES-${filtro.toUpperCase().replace(/\s+/g, '')}`;
-        return `${this.archivosComisionPath}${archivoNombre}.pdf`;
-      }
-   
-
-
+      this.miembros = miembros.filter(m => m.comisionNombreCorte === this.filtro);
+      this.presidentes = presidentesConFoto.filter(p => p.corteNombre.trim().toLowerCase() === this.filtro.trim().toLowerCase());
+    });
   }
 
 
-
+  getArchivoComisionUrl(filtro: string): string {
+    const archivoNombre = `RES-${filtro.toUpperCase().replace(/\s+/g, '')}`;
+    return `${this.archivosComisionPath}${archivoNombre}.pdf`;
+  }
+}

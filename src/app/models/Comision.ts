@@ -6,11 +6,10 @@ export class Comision {
 
     comisionPk:number;
     xdescripcion: string;
-    nestado: string;
-    ffechaRegistro:string;
-    ffechaModificacion:string;
-    cortefk: Corte;
-    periodofk: Periodo;
+    corteId: number;
+    nombreCorte: String;
+    periodoId: Periodo;
+    nombrePeriodo: string;
     xresolucion: string;
 
 }

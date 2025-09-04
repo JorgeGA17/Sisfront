@@ -18,11 +18,11 @@
         </thead>
         <tbody>
           <tr *ngFor="let proyecto of filteredProyectos() | paginate: { itemsPerPage: noOfRows, currentPage: page }; let i = index">
-            <td>{{proyecto.xnombreproyecto}}</td>
-            <td>{{proyecto.cortefk.xnombreCorto}}</td>
-            <td>{{proyecto.xobjetivogeneral}}</td>
+            <td>{{proyecto.xnombreProyecto}}</td>
+            <td>{{proyecto.nombreCorte}}</td>
+            <td>{{proyecto.xobjetivoGeneral}}</td>
             <td>
-              <button [routerLink]="['/detalle-proyecto', proyecto.proyectopk]" class="ver-detalle-button">
+              <button [routerLink]="['/detalle-proyecto', proyecto.proyectoPk]" class="ver-detalle-button">
                 Ver detalle
               </button>
             </td>

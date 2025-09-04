@@ -1,27 +1,28 @@
-import { Corte } from './corte';
-import { Eje } from './Eje';
-import { Especialidad } from './especialidad';
-import { Estado } from './estado';
-import { Etiqueta } from './Etiqueta';
-import { Jerarquia } from './Jerarquia';
-import { Personal } from './Personal';
-
 export class Proyecto {
-    proyectopk: number;
-    xnombreproyecto: string;
+    proyectoPk: number;
+    xnombreProyecto: string;
     xproblematica: string;
     xresumen: string;
-    xobjetivogeneral: string;
+    xobjetivoGeneral: string;
     xinnovacion: number;
     ximpacto: number;
-    xreplicabilidad: number;
     xsostenibilidad: number;
-    cortefk: Corte;
-    estadofk: Estado;
-    especialidades: Especialidad[];
-    jerarquias:Jerarquia[];
-    ejes: Eje[];
-    etiquetas: Etiqueta[];
-    personas: Personal[];
-    
+    xreplicabilidad: number;
+    xconcepoEval: string;
+    xdescripEval: string;
+    nombreCorte: string;
+    nombreEstado: string;
+    corteId: number;
+    estadoId:number;
+    especialidadIds: number[];
+    jerarquiaIds: number[];
+    ejeIds: number[];
+    etiquetaIds: number[];
+    personalIds: number[];
+    listaNombresEspecialidades: string[];
+    listaNombresJerarquias: string[];
+    listaNombresEjes: string[];
+    listaNombresEtiquetas: string[];
+    listaNombresPersonal: string[];
+
 }

@@ -1,7 +1,6 @@
 export class Personal{
     
     personalPk:number;
-    xtipoDocumento:string;
     nnumeroDocumento:string;
     xnombreCompleto:string;
     xnombre:string;
