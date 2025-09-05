@@ -1,4 +1,4 @@
-import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { AppRoutingModule } from "./app-routing.module";
@@ -20,6 +20,8 @@ import { DetalleComponent } from './Corte/lista-cortes/detalle/detalle.component
 import { BusquedaAvanzadaComponent } from './busqueda-avanzada/busqueda-avanzada.component';
 import { BusquedaProponenteComponent } from './busqueda-proponente/busqueda-proponente.component';
 import { DetalleProyectoComponent } from "./Proyecto/detalle-proyecto/detalle-proyecto.component";
+import { TokenInterceptor } from "./interceptor/token.interceptor";
+import { LoginComponent } from "./login/login.component";
 
 @NgModule({
   declarations: [
@@ -51,7 +53,13 @@ import { DetalleProyectoComponent } from "./Proyecto/detalle-proyecto/detalle-pr
     ReactiveFormsModule
   ],
 
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true // Es importante para permitir múltiples interceptores
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
