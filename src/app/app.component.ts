@@ -8,21 +8,21 @@ import { AuthService } from './service/auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent implements OnInit {
   title = 'Mi App';
 
   constructor(
-    public authService: AuthService,
-    private router: Router // Asegúrate de que el Router esté inyectado
+    public authService: AuthService, // Se usa en el HTML directamente
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    // Si tienes alguna lógica de inicialización, va aquí.
+    // Inicialización si la necesitas
   }
 
   logout(): void {
-    this.authService.logout(); // Esto elimina el token del localStorage.
-    this.router.navigate(['/login']); // Esto redirige al usuario.
+    this.authService.logout(); // elimina el token
+    this.router.navigate(['/']); // lo mando al home público
   }
 }
-  

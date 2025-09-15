@@ -16,4 +16,7 @@ export class PersonalService {
     return this.http.get<any[]>(this.urlEndPoint);
   }
 
+
+  
+
 }

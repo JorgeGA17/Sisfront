@@ -1,0 +1,158 @@
+<div class="container mt-4">
+  <div class="card p-4">
+    <h2 class="card-title text-center">Editar Proyecto</h2>
+    <hr>
+    <form [formGroup]="creacion" (ngSubmit)="onSubmit()">
+
+      <!-- === Campos simples === -->
+      <div class="mb-3">
+        <label for="xnombreProyecto" class="form-label">Nombre del Proyecto</label>
+        <input type="text" id="xnombreProyecto" formControlName="xnombreProyecto" class="form-control">
+      </div>
+
+      <div class="mb-3">
+        <label for="xproblematica" class="form-label">Problemática</label>
+        <textarea id="xproblematica" formControlName="xproblematica" class="form-control" rows="3"></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="xresumen" class="form-label">Resumen</label>
+        <textarea id="xresumen" formControlName="xresumen" class="form-control" rows="3"></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="xobjetivoGeneral" class="form-label">Objetivo General</label>
+        <textarea id="xobjetivoGeneral" formControlName="xobjetivoGeneral" class="form-control" rows="3"></textarea>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="xinnovacion" class="form-label">Innovación</label>
+          <input type="number" id="xinnovacion" formControlName="xinnovacion" class="form-control" min="1" max="5">
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="ximpacto" class="form-label">Impacto</label>
+          <input type="number" id="ximpacto" formControlName="ximpacto" class="form-control" min="1" max="5">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="xsostenibilidad" class="form-label">Sostenibilidad</label>
+          <input type="number" id="xsostenibilidad" formControlName="xsostenibilidad" class="form-control" min="1" max="5">
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="xreplicabilidad" class="form-label">Replicabilidad</label>
+          <input type="number" id="xreplicabilidad" formControlName="xreplicabilidad" class="form-control" min="1" max="5">
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="xconceptoEval" class="form-label">Concepto de Evaluación</label>
+        <textarea id="xconceptoEval" formControlName="xconceptoEval" class="form-control" rows="2"></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="xdescripEval" class="form-label">Descripción de Evaluación</label>
+        <textarea id="xdescripEval" formControlName="xdescripEval" class="form-control" rows="3"></textarea>
+      </div>
+
+      <!-- === Relaciones === -->
+      <div class="mb-3">
+        <label for="corteId" class="form-label">Corte</label>
+        <select id="corteId" formControlName="corteId" class="form-select">
+          <option [ngValue]="null" disabled>Selecciona un corte</option>
+          <option *ngFor="let corte of cortes" [ngValue]="corte.cortePk">{{ corte.xnombre }}</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="estadoId" class="form-label">Estado</label>
+        <select id="estadoId" formControlName="estadoId" class="form-select">
+          <option [ngValue]="null" disabled>Selecciona un estado</option>
+          <option *ngFor="let estado of estados" [ngValue]="estado.estadoPk">{{ estado.xnombre }}</option>
+        </select>
+      </div>
+
+      <!-- === Especialidades === -->
+      <div class="form-group">
+        <label>Especialidades:</label>
+        <select class="form-control" (change)="onEspecialidadSelect($event)">
+          <option [value]="null" disabled selected>Selecciona una especialidad</option>
+          <option *ngFor="let esp of especialidades" [value]="esp.especialidadPk">{{ esp.xnombre }}</option>
+        </select>
+      </div>
+      <ul>
+        <li *ngFor="let id of creacion.get('especialidadIds')?.value">
+          {{ getNombreEspecialidad(id) }}
+          <button type="button" class="btn btn-sm btn-danger ms-2" (click)="removeSeleccionado('especialidadIds', id)">Eliminar</button>
+        </li>
+      </ul>
+
+      <!-- === Jerarquías === -->
+      <div class="form-group">
+        <label>Jerarquías:</label>
+        <select class="form-control" (change)="onJerarquiaSelect($event)">
+          <option [value]="null" disabled selected>Selecciona una jerarquía</option>
+          <option *ngFor="let jer of jerarquias" [value]="jer.jerarquiaPk">{{ jer.xnombre }}</option>
+        </select>
+      </div>
+      <ul>
+        <li *ngFor="let id of creacion.get('jerarquiaIds')?.value">
+          {{ getNombreJerarquia(id) }}
+          <button type="button" class="btn btn-sm btn-danger ms-2" (click)="removeSeleccionado('jerarquiaIds', id)">Eliminar</button>
+        </li>
+      </ul>
+
+      <!-- === Ejes === -->
+      <div class="form-group">
+        <label>Ejes:</label>
+        <select class="form-control" (change)="onEjeSelect($event)">
+          <option [value]="null" disabled selected>Selecciona un eje</option>
+          <option *ngFor="let eje of ejes" [value]="eje.ejePk">{{ eje.xnombre }}</option>
+        </select>
+      </div>
+      <ul>
+        <li *ngFor="let id of creacion.get('ejeIds')?.value">
+          {{ getNombreEje(id) }}
+          <button type="button" class="btn btn-sm btn-danger ms-2" (click)="removeSeleccionado('ejeIds', id)">Eliminar</button>
+        </li>
+      </ul>
+
+      <!-- === Etiquetas === -->
+      <div class="form-group">
+        <label>Etiquetas:</label>
+        <select class="form-control" (change)="onEtiquetaSelect($event)">
+          <option [value]="null" disabled selected>Selecciona una etiqueta</option>
+          <option *ngFor="let et of etiquetas" [value]="et.etiquetaPk">{{ et.xnombre }}</option>
+        </select>
+      </div>
+      <ul>
+        <li *ngFor="let id of creacion.get('etiquetaIds')?.value">
+          {{ getNombreEtiqueta(id) }}
+          <button type="button" class="btn btn-sm btn-danger ms-2" (click)="removeSeleccionado('etiquetaIds', id)">Eliminar</button>
+        </li>
+      </ul>
+
+      <!-- === Personal === -->
+      <div class="form-group">
+        <label>Personal:</label>
+        <select class="form-control" (change)="onPersonalSelect($event)">
+          <option [value]="null" disabled selected>Selecciona una persona</option>
+          <option *ngFor="let p of personal" [value]="p.personalPk">{{ p.xnombre }} {{ p.xapellido }}</option>
+        </select>
+      </div>
+      <ul>
+        <li *ngFor="let id of creacion.get('personalIds')?.value">
+          {{ getNombrePersonal(id) }}
+          <button type="button" class="btn btn-sm btn-danger ms-2" (click)="removeSeleccionado('personalIds', id)">Eliminar</button>
+        </li>
+      </ul>
+
+      <!-- === Botón === -->
+      <div class="d-grid gap-2 mt-4">
+        <button type="submit" class="btn btn-success" [disabled]="!creacion.valid">Guardar Cambios</button>
+      </div>
+    </form>
+  </div>
+</div>

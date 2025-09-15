@@ -14,15 +14,14 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(credentials: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, credentials).pipe(
-      tap(response => {
-        // Al recibir la respuesta del backend, guarda el token en el almacenamiento local
-        if (response && response.token) {
-          localStorage.setItem(this.tokenKey, response.token);
-        }
-      })
-    );
-  }
+  return this.http.post<any>(this.apiUrl, credentials).pipe(
+    tap(response => {
+      if (response && response.token) {
+        localStorage.setItem(this.tokenKey, response.token);
+      }
+    })
+  );
+}
 
   getToken(): string | null {
     return localStorage.getItem(this.tokenKey);

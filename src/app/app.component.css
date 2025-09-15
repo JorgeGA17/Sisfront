@@ -1,49 +1,50 @@
-.navbar {
-  background-color: #8B0A1A; /* Color dark red */
-  color: #fff; /* Color de texto blanco */
-  position: fixed; /* Cambia de relative a fixed */
-  top: 0; /* Fija la navbar en la parte superior */
-  left: 0; /* Fija la navbar en la parte izquierda */
-  width: 100%; /* Ancho del 100% para que ocupe toda la pantalla */
-  z-index: 2000; /* Mantén el z-index para que se muestre encima de otros elementos */
+/* ==== NAVBAR ==== */
+.navbar-custom {
+  background-color: #8B0A1A !important; /* Rojo oscuro */
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2000;
 }
 
-  .logo{
-    filter: grayscale(100%) brightness(100);;
-  }
+/* Logo en blanco y negro */
+.logo {
+  filter: grayscale(100%) brightness(100);
+}
 
-  .navbar-brand {
-    color: #fff; /* Color de texto blanco para la marca */
-   
-  }
+/* Links del menú */
+.navbar-custom .nav-link {
+  color: #fff !important;
+  font-size: 17px;
+}
 
-  .navbar-nav .nav-link {
-    color: #fff; /* Color de texto blanco para los enlaces de navegación */
-    font-size: 17px;
-  }
-  
-  .navbar-nav .nav-link:hover {
-    color: #ccc; /* Color de texto gris claro para los enlaces de navegación en hover */
-  }
+.navbar-custom .nav-link:hover {
+  color: #ccc !important; /* Gris en hover */
+}
 
-  .dropdown-item {
-  /* Agrega un borde inferior a cada elemento de lista */
-  border-bottom: 1px solid #ccc;
-  /* Agrega un padding adicional para separar los elementos */
+/* ==== DROPDOWN ==== */
+.navbar-custom .dropdown-menu {
+  background-color: #8B0A1A; /* Fondo rojo oscuro */
+  border: none;
+}
+
+.navbar-custom .dropdown-item {
+  color: #fff !important;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
   padding: 10px 20px;
-  /* Cambia el tamaño de la fuente y el estilo */
   font-size: 16px;
-  /* Agrega un fondo claro para resaltar los elementos */
-  background-color: #f7f7f7;
-  }
+}
 
-  .dropdown-item:hover {
-     /* Cambia el fondo y el texto al pasar el mouse por encima */
-    background-color: #e7e7e7;
-    color: #333;
-  }
+.navbar-custom .dropdown-item:hover {
+  background-color: #a30e25;
+  color: #fff !important;
+}
 
- 
-  body {
-    background-color: #f7f7f7; /* tono de gris claro */
-  }
+/* ==== CONTENIDO PRINCIPAL ==== */
+.main-content {
+  padding-top: 80px; /* para que no se tape con navbar fijo */
+  min-height: 100vh;
+  background-color: #f7f7f7; /* gris claro */
+}

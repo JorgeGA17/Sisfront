@@ -1,44 +1,61 @@
-<nav *ngIf="authService.isLoggedIn()" class="navbar navbar-expand-lg navbar-light">
-  <a class="navbar-brand" routerLink="/home">
+<nav class="navbar navbar-expand-lg navbar-custom navbar-dark">
+  <a class="navbar-brand" routerLink="/">
     <img class="logo" src="assets/bproyecto0.png" alt="Logo" style="height: 50px; margin-right: 20px;">
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav mr-auto">
+      <!-- Inicio siempre público -->
       <li class="nav-item">
-        <a class="nav-link" routerLink="/home">Inicio</a>
+        <a class="nav-link" routerLink="/">Inicio</a>
       </li>
 
+      <!-- Dropdown Proyectos -->
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="proyecto" role="button" data-toggle="dropdown"
-          aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="proyecto" role="button" data-toggle="dropdown">
           Proyectos
         </a>
-        <div class="dropdown-menu" aria-labelledby="proyectoDropdown">
+        <div class="dropdown-menu">
+          <!-- Rutas públicas -->
           <a class="dropdown-item" routerLink="/lista-proyectos">Listado de Proyectos</a>
           <a class="dropdown-item" routerLink="/lista-cortes">Por Corte Superior</a>
           <a class="dropdown-item" routerLink="/busqueda-proponente">Por Proponente</a>
           <a class="dropdown-item" routerLink="/busqueda-avanzada">Búsqueda Avanzada</a>
+
+          <div class="dropdown-divider" *ngIf="authService.isLoggedIn()"></div>
+
+          <!-- CRUD solo si logueado -->
+          <a class="dropdown-item" *ngIf="authService.isLoggedIn()" routerLink="/creacion">Crear Proyecto</a>
+          <a class="dropdown-item" *ngIf="authService.isLoggedIn()" routerLink="/editar">Editar Proyecto</a>
         </div>
       </li>
 
+      <!-- Estadística siempre pública -->
       <li class="nav-item">
         <a class="nav-link" routerLink="/estadistica">Estadística</a>
       </li>
     </ul>
 
+    <!-- Lado derecho -->
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
+      <!-- Si está logueado -->
+      <li class="nav-item" *ngIf="authService.isLoggedIn()">
         <a class="nav-link" (click)="logout()" style="cursor: pointer;">Cerrar Sesión</a>
+      </li>
+
+      <!-- Si NO está logueado -->
+      <li class="nav-item" *ngIf="!authService.isLoggedIn()">
+        <a class="nav-link" routerLink="/login">Iniciar Sesión</a>
       </li>
     </ul>
   </div>
 </nav>
 
-<body>
+<!-- Contenido principal -->
+<div class="main-content">
   <router-outlet></router-outlet>
-</body>
+</div>

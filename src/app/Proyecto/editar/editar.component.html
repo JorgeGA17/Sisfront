@@ -1,0 +1,83 @@
+<mat-card appearance="outlined">
+  <mat-card-content>
+    <h2 style="text-align: center;">Editar Proyectos</h2>
+
+    <!-- Barra de búsqueda -->
+    <div>
+      <input
+        type="text"
+        class="form-control"
+        style="max-width: 1500px"
+        [(ngModel)]="searchText"
+        (ngModelChange)="buscar()"
+        placeholder="Buscar..."
+      />
+    </div>
+
+    <!-- Tabla -->
+    <div class="table-container">
+      <table
+        class="table table-striped table-full"
+        style="max-width: 1500px; margin: 0 auto;"
+      >
+        <thead class="thead">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Corte</th>
+            <th scope="col">Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let proyecto of filteredProyectos()
+                | paginate: { itemsPerPage: noOfRows, currentPage: page };
+              let i = index
+            "
+          >
+            <td>{{ proyecto.proyectoPk }}</td>
+            <td>{{ proyecto.xnombreProyecto }}</td>
+            <td>{{ proyecto.nombreCorte }}</td>
+            <td>
+              <button
+                class="btn btn-warning btn-sm"
+                (click)="editarProyecto(proyecto.proyectoPk)"
+              >
+                Editar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Paginación -->
+    <div class="pagination-container">
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+      <pagination-template
+        #p="paginationApi"
+        (pageChange)="page = $event"
+      >
+        <div class="form-group item-par-page">
+          <label for="noRows">Página</label>
+          <span>
+            {{ getStartIndex(p.getCurrent(), p.getLastPage()) }} -
+            {{ getLastIndex(p.getCurrent(), p.getLastPage()) }} de
+            {{ datas?.length }}
+          </span>
+          <select
+            name="noRows"
+            id="noRows"
+            (change)="page = 1"
+            [(ngModel)]="noOfRows"
+          >
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+          </select>
+        </div>
+      </pagination-template>
+    </div>
+  </mat-card-content>
+</mat-card>

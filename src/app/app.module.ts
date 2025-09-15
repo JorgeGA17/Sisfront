@@ -22,6 +22,7 @@ import { BusquedaProponenteComponent } from './busqueda-proponente/busqueda-prop
 import { DetalleProyectoComponent } from "./Proyecto/detalle-proyecto/detalle-proyecto.component";
 import { TokenInterceptor } from "./interceptor/token.interceptor";
 import { LoginComponent } from "./login/login.component";
+import { CreacionComponent } from "./Proyecto/creacion/creacion.component";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { LoginComponent } from "./login/login.component";
     DetalleProyectoComponent,
     DetalleComponent,
     BusquedaAvanzadaComponent,
-    BusquedaProponenteComponent
+    BusquedaProponenteComponent,
+    CreacionComponent
   ],
   imports: [
     BrowserModule,

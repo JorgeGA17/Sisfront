@@ -1,0 +1,24 @@
+/* Estilo para los selectores de una sola opción (Corte y Estado) */
+.form-select {
+  border-radius: 0.25rem;
+  border: 1px solid #ced4da;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+}
+
+/* Estilo para los selectores de múltiples opciones (listas) */
+.form-select[multiple] {
+  /* Fija una altura para que se muestren varias opciones a la vez */
+  height: 150px; 
+}
+
+/* Ajusta los márgenes para separar los selectores del texto */
+.mb-3 {
+  margin-bottom: 1.5rem !important; /* Aumenta el espacio debajo de cada grupo de formulario */
+}
+
+.form-label {
+  margin-bottom: 0.5rem; /* Espacio entre la etiqueta y el selector */
+  font-weight: 500;
+  display: block; /* Asegura que la etiqueta esté en su propia línea */
+}
